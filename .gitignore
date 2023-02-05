@@ -1,0 +1,10 @@
+node_modules
+./node_modules
+**/Flask_Photos_Microservice/mongodata/
+**/Flask_Photos_Microservice/__pycache__/
+**/Flask_Photos_Microservice/src/venv/
+**/Node_login_Microservice/node_modules/
+**/Node_login_Microservice/data/
+
+
+

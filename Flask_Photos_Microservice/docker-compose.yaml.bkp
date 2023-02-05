@@ -1,0 +1,31 @@
+version: '3'
+services:
+  flask-mongodb-microservice:
+    image: flask_photos_microservice
+    ports:
+      - 5001:5001
+    environment:
+      MONGO_URI: mongodb://localhost:27017/photosdb
+    volumes:
+      - mongodb-data:/data/db
+    depends_on:
+      - mongodb
+      - redis
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    volumes:
+      - mongodb-data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: aniket
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: photosdb
+      MONGODB_DATA_DIR: /data/db
+      MONDODB_LOG_DIR: /dev/null
+  redis:
+    image: redis
+    container_name: rediscli
+    ports:
+      - 6379:6379
+volumes:
+  mongodb-data:

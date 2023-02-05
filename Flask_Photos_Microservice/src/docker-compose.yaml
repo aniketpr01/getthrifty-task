@@ -1,0 +1,39 @@
+version: '3'
+services:
+  flask-mongodb-microservice:
+    # image: flask_photos_microservice
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    # environment:
+    #   MONGO_URI: mongodb://localhost:27017/photosdb
+    volumes:
+      - .:/app
+    depends_on:
+      - mongodb
+      - redis
+    links:
+      - mongodb
+      - redis
+  mongodb:
+    image: mongo:latest
+    hostname: test_mongodb
+    restart: always
+    command: mongod --port 27017
+    volumes:
+      - ./mongodata/db:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_DATABASE=photosdb
+    ports:
+      - 27017:27017
+  redis:
+    image: redis
+    container_name: rediscli
+    ports:
+      - 6379:6379
+volumes:
+  mongodb-data:
