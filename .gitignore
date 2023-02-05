@@ -8,6 +8,7 @@ node_modules
 **/Node_login_Microservice/database/
 ./Flask_Photos_Microservice/src/mongodata
 ./Node_login_Microservice/.DS_Store
+.DS_Store
 
 
 
