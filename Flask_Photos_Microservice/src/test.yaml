@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: testpod
+  labels:
+    io.kompose.service: testpod
+spec:
+  containers:
+    - image: anikep/flask_photos_microservice:1.0.0
+      name: testpod
+      imagePullPolicy: Always
+      ports:
+        - containerPort: 4000 
+  restartPolicy: Always

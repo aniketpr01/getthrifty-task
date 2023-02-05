@@ -22,7 +22,7 @@ docker images
 docker run
 <!-- run the image in detached mode. Because we need to view this application in the browser -->
 <!-- docker run -d -p 5000:5001 flask_photos_microservice -->
-docker run -d -p 3000:3000 flask_photos_microservice
+docker run -d -p 4000:4000 flask_photos_microservice
 
 <!-- We can use the following command to see which containers are currently running -->
 docker ps

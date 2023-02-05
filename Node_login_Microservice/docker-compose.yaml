@@ -1,22 +1,22 @@
 version: '3'
 services:
-  nginx:
-    image: nginx:latest
-    ports:
-      - 3000:3000
-    volumes:
-      - ./conf.d:/etc/nginx/conf.d
-    depends_on:
-      - app
+  # nginx:
+  #   image: nginx:latest
+  #   ports:
+  #     - 3000:3000
+  #   volumes:
+  #     - ./conf.d:/etc/nginx/conf.d
+  #   depends_on:
+  #     - app
   app:
     build:
       context: .
       dockerfile: Dockerfile
     # image: node_login_microservice
     # disabled for nginx mode
-    # container_name: nodejs_api
-    # ports:
-    #   - "3000:3000"
+    container_name: nodejs_api
+    ports:
+      - "3000:3000"
     environment:
       NODE_ENV: development
       PORT: 3000
@@ -31,7 +31,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./dbinit/init.sql:/docker-entrypoint-initdb.d/0_init.sql
-      - $HOME/database:/var/lib/mysql
+      - ./database:/var/lib/mysql
     ports:
       - 3306:3306
     expose:

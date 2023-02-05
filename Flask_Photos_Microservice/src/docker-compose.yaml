@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - 3000:3000
+      - 4000:4000
     # environment:
     #   MONGO_URI: mongodb://localhost:27017/photosdb
     volumes:
@@ -19,7 +19,7 @@ services:
       - redis
   mongodb:
     image: mongo:latest
-    hostname: test_mongodb
+    hostname: test-mongodb
     restart: always
     command: mongod --port 27017
     volumes:

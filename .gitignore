@@ -1,10 +1,13 @@
 node_modules
 ./node_modules
-**/Flask_Photos_Microservice/mongodata/
-**/Flask_Photos_Microservice/__pycache__/
+**/Flask_Photos_Microservice/src/__pycache__/
 **/Flask_Photos_Microservice/src/venv/
+**/Flask_Photos_Microservice/src/mongodata/
 **/Node_login_Microservice/node_modules/
 **/Node_login_Microservice/data/
+**/Node_login_Microservice/database/
+./Flask_Photos_Microservice/src/mongodata
+./Node_login_Microservice/.DS_Store
 
 
 

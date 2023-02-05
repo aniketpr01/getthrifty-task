@@ -10,7 +10,7 @@ app = Flask(__name__)
 # Connect to MongoDB
 app.config[
     "MONGO_URI"
-] = "mongodb://root:password@test_mongodb:27017/photosdb?authSource=admin"
+] = "mongodb://root:password@test-mongodb:27017/photosdb?authSource=admin"
 mongo = PyMongo(app)
 
 # Connect to Redis
@@ -60,5 +60,5 @@ def store_photos():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=3000, debug=True)
+    app.run(host="0.0.0.0", port=4000, debug=True)
     # get_photos_dev(1)
