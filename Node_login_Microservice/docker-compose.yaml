@@ -8,13 +8,13 @@ services:
   #     - ./conf.d:/etc/nginx/conf.d
   #   depends_on:
   #     - app
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    # image: node_login_microservice
+  nodejs-login:
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    image: anikep/node_login_microservice:1.0.0
     # disabled for nginx mode
-    container_name: nodejs_api
+    container_name: nodejs-login
     ports:
       - "3000:3000"
     environment:
@@ -23,6 +23,8 @@ services:
       DATABASE_URL: mysql://aniket:password@mysql:3306/userdb
     depends_on:
       - mysql
+    networks:
+      - getthrifty-network
   mysql:
     image: mysql:8.0
     hostname: mysqlcontainer
@@ -39,3 +41,8 @@ services:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_USER=aniket
       - MYSQL_PASSWORD=password
+    networks:
+      - getthrifty-network
+networks:
+  getthrifty-network:
+    driver: bridge
