@@ -31,7 +31,7 @@ router.get('/', (req, res) => {
 });
 // Connection configuration
 const pool = promise_1.default.createPool({
-    host: process.env.DB_HOST || 'localhost',
+    host: process.env.DB_HOST || 'mysqlcontainer',
     user: process.env.DB_USER || 'aniket',
     password: process.env.DB_PASSWORD || 'password',
     database: process.env.DB_NAME || 'userdb',
@@ -91,7 +91,7 @@ function getPhotos(userId) {
         }
     });
 }
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
