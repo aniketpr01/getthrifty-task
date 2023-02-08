@@ -1,0 +1,48 @@
+version: '3'
+services:
+  flask-mongodb-microservice:
+    # image: flask_photos_microservice
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    image: anikep/flask_photos_microservice:1.0.0
+    ports:
+      - 4000:4000
+    # environment:
+    #   MONGO_URI: mongodb://localhost:27017/photosdb
+    volumes:
+      - ../:/app
+    depends_on:
+      - test-mongodb
+      - rediscli
+    links:
+      - test-mongodb
+      - rediscli
+    networks:
+      - getthrifty-network
+  test-mongodb:
+    image: mongo:latest
+    hostname: test-mongodb
+    restart: always
+    command: mongod --port 27017
+    volumes:
+      - ../app/mongodata/db:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_DATABASE=photosdb
+    ports:
+      - 27017:27017
+    networks:
+      - getthrifty-network
+  rediscli:
+    image: redis
+    ports:
+      - 6379:6379
+    networks:
+      - getthrifty-network
+volumes:
+  mongodb-data:
+networks:
+  getthrifty-network:
+    driver: bridge  

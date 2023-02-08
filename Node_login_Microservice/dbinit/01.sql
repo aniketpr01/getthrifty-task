@@ -1,5 +1,0 @@
-CREATE DATABASE IF NOT EXISTS userdb;
-CREATE TABLE IF NOT EXISTS userdb.users (
-    username VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL
-);
